@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Lavalink music server (optional - for full music functionality)
+  lavalink:
+    image: fredboat/lavalink:latest
+    container_name: chordknight-lavalink
+    restart: unless-stopped
+    ports:
+      - "2333:2333"
+    environment:
+      - SERVER_PORT=2333
+      - LAVALINK_SERVER_PASSWORD=youshallnotpass
+    volumes:
+      - ./lavalink/application.yml:/opt/Lavalink/application.yml
+    networks:
+      - chordknight-network
+    profiles:
+      - music
+
+  # PostgreSQL database (optional - for persistent state)
+  postgres:
+    image: postgres:15-alpine
+    container_name: chordknight-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=chordknight
+      - POSTGRES_PASSWORD=chordknight
+      - POSTGRES_DB=chordknight
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - chordknight-network
+    profiles:
+      - database
+
+  # Redis cache (optional - for distributed state)
+  redis:
+    image: redis:7-alpine
+    container_name: chordknight-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - chordknight-network
+    profiles:
+      - cache
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  chordknight-network:
+    driver: bridge
