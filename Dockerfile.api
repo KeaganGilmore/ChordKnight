@@ -1,0 +1,14 @@
+FROM gradle:8.5-jdk17 AS build
+
+WORKDIR /app
+COPY . .
+
+RUN gradle :api-server:jar --no-daemon
+
+FROM eclipse-temurin:17-jre-alpine
+
+WORKDIR /app
+
+COPY --from=build /app/api-server/build/libs/api-server-1.0.0-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
