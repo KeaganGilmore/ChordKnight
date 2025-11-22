@@ -1,0 +1,58 @@
+# Gradle
+.gradle/
+build/
+!gradle-wrapper.jar
+gradle-app.setting
+.gradletasknamecache
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+*.env
+!sample.env
+
+# Logs
+*.log
+logs/
+
+# Node.js (for web/)
+node_modules/
+dist/
+.svelte-kit/
+.vercel/
+.output/
+.env.*
+!.env.example
+
+# Build outputs
+target/
+*.jar
+!gradle-wrapper.jar
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Database
+*.db
+*.sqlite
