@@ -1,0 +1,56 @@
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+
+# Kotlin
+*.class
+*.jar
+*.war
+*.ear
+*.kotlin_module
+*.kotlin_metadata
+
+# IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env.local
+
+# Logs
+logs/
+*.log
+
+# Node (for web module)
+node_modules/
+dist/
+.svelte-kit/
+.vercel/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+out/
+bin/
+target/
+
+# Temp files
+*.swp
+*.swo
+*~
+.tmp/
