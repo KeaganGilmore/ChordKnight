@@ -28,7 +28,8 @@ data class GameStateResponse(
 )
 
 // In-memory game storage (in production, use a database)
-private val games = mutableMapOf<String, ChessEngine>()
+// Using ConcurrentHashMap for thread-safe concurrent access
+private val games = java.util.concurrent.ConcurrentHashMap<String, ChessEngine>()
 
 /**
  * Chess API routes

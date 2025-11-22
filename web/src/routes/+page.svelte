@@ -1,9 +1,11 @@
 <script lang="ts">
+	// Use environment variable or default to localhost for development
+	const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 	let apiStatus = 'Checking...';
 	
 	async function checkApi() {
 		try {
-			const response = await fetch('http://localhost:8080/health');
+			const response = await fetch(`${apiUrl}/health`);
 			const data = await response.json();
 			apiStatus = data.status === 'healthy' ? '✅ API Online' : '❌ API Offline';
 		} catch (error) {
