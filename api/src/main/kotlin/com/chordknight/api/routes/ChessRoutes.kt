@@ -15,7 +15,6 @@ data class NewGameRequest(
 
 @Serializable
 data class MakeMoveRequest(
-    val gameId: String,
     val from: String,
     val to: String
 )

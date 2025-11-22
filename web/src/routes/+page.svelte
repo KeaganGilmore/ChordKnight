@@ -1,6 +1,6 @@
 <script lang="ts">
-	// Use environment variable or default to localhost for development
-	const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+	// Use environment variable with production-safe fallback
+	const apiUrl = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '/api' : 'http://localhost:8080');
 	let apiStatus = 'Checking...';
 	
 	async function checkApi() {

@@ -108,7 +108,6 @@ Make a move in a chess game.
 
 ```json
 {
-  "gameId": "game-123",
   "from": "e2",
   "to": "e4"
 }
@@ -134,7 +133,7 @@ Make a move in a chess game.
 ```bash
 curl -X POST http://localhost:8080/chess/game/game-123/move \
   -H "Content-Type: application/json" \
-  -d '{"gameId": "game-123", "from": "e2", "to": "e4"}'
+  -d '{"from": "e2", "to": "e4"}'
 ```
 
 ---
@@ -207,12 +206,12 @@ curl -X POST http://localhost:8080/chess/game \
 # 2. Make white's first move (e2 to e4)
 curl -X POST http://localhost:8080/chess/game/my-game/move \
   -H "Content-Type: application/json" \
-  -d '{"gameId": "my-game", "from": "e2", "to": "e4"}'
+  -d '{"from": "e2", "to": "e4"}'
 
 # 3. Make black's first move (e7 to e5)
 curl -X POST http://localhost:8080/chess/game/my-game/move \
   -H "Content-Type: application/json" \
-  -d '{"gameId": "my-game", "from": "e7", "to": "e5"}'
+  -d '{"from": "e7", "to": "e5"}'
 
 # 4. Get current game state
 curl http://localhost:8080/chess/game/my-game
@@ -243,7 +242,7 @@ const makeMove = async (gameId: string, from: string, to: string) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ gameId, from, to }),
+    body: JSON.stringify({ from, to }),
   });
   return await response.json();
 };

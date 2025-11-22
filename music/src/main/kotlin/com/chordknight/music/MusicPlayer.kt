@@ -21,7 +21,7 @@ data class Track(
  */
 class MusicPlayer {
     private val logger = LoggerFactory.getLogger(MusicPlayer::class.java)
-    private val players = mutableMapOf<String, GuildMusicPlayer>()
+    private val players = java.util.concurrent.ConcurrentHashMap<String, GuildMusicPlayer>()
     
     /**
      * Get or create a music player for a guild
